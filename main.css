@@ -7,15 +7,17 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: 30vh;
+    max-width: 420px;
+    margin: 90px auto 0;
   }
 
 .card {
+    display: inline-block;
     width: 80px;
     height: 110px;
     margin: 10px;
     perspective: 500px;
-    cursor: pointer;
     background-color: lightgrey;
     border: 1px solid grey;
     border-radius: 10%;
