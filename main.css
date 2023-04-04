@@ -28,6 +28,20 @@ body {
     font-size: 2.5em;
   }
   
+  .card-back span {
+    color: rgba(0,0,0,0);
+  }
+  
+  .card-back  {
+  background:
+    linear-gradient(135deg, #FBFBFB 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, #FBFBFB 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, #FBFBFB 25%, transparent 25%),
+    linear-gradient(45deg, #FBFBFB 25%, transparent 25%);
+    background-size: 10px 10px;
+    background-color: lightgrey;
+    color: rgba(0,0,0,0);
+  }
 
   
 
