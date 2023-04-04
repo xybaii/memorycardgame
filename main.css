@@ -22,6 +22,7 @@ body {
     border: 1px solid grey;
     border-radius: 10%;
     box-shadow: 2px 2px 4px grey;
+    transition: transform 0.2s ease-in-out;
   }
 
   h1 {
@@ -33,7 +34,8 @@ body {
   }
   
   .card-back  {
-  background:
+    transform: rotateY(180deg);
+    background:
     linear-gradient(135deg, #FBFBFB 25%, transparent 25%) -50px 0,
     linear-gradient(225deg, #FBFBFB 25%, transparent 25%) -50px 0,
     linear-gradient(315deg, #FBFBFB 25%, transparent 25%),
