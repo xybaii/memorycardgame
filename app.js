@@ -41,43 +41,48 @@ $(() => {
   
     let openedCards = [];
   
+    let isComparing = false;
+    
     // Add event handler and toggle class
     const eventHandler = (event) => {
       const clickedCard = $(event.currentTarget);
       
-      // Check if the card is already open
-      if (clickedCard.hasClass("card-back")) {
+      // Check if the card is already open and comparison is not in progress
+      if (clickedCard.hasClass("card-back") && !isComparing) {
         clickedCard.toggleClass("card-back");
-  
+    
         // Add the opened card to the array
         openedCards.push(clickedCard);
-  
+    
         // Check if there are two opened cards
         if (openedCards.length === 2) {
+          isComparing = true;
           const firstCard = openedCards[0];
           const secondCard = openedCards[1];
-  
+    
           const firstLetter = firstCard.find("h1").text();
           const secondLetter = secondCard.find("h1").text();
-  
+    
           // Check if the two cards match
           if (firstLetter === secondLetter) {
             openedCards = [];
-  
+    
             // Check if all cards are matched and opened
             if ($(".card.card-back").length === 0) {
               alert("You won!");
             }
+            isComparing = false;
           } else {
             setTimeout(() => {
               firstCard.toggleClass("card-back");
               secondCard.toggleClass("card-back");
               openedCards = [];
+              isComparing = false;
             }, 300);
           }
         }
       }
-    };
+    };    
     $(".card").on("click", eventHandler);
   
     let timeLeft = 40;
