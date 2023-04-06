@@ -38,6 +38,19 @@ $(() => {
       card.append(cardDesign);
       $(".gameboard").append(card);
     }
+
+    const showBanner = (text, color) => {
+      const $bannerDiv = $('<div>').attr('id', 'banner');
+      $('.container').append($bannerDiv);
+      const banner = $("#banner");
+      banner.text(text);
+      banner.css({ backgroundColor: color });
+      banner.animate({ top: "50%" }, 500, () => {
+        setTimeout(() => {
+          banner.animate({ top: "-100px" }, 500);
+        }, 5000);
+      });
+    };
   
     let openedCards = [];
   
@@ -66,10 +79,17 @@ $(() => {
           // Check if the two cards match
           if (firstLetter === secondLetter) {
             openedCards = [];
-    
+            
+            const showModal = (text) => {
+              const modal = $("#modal");
+              const modalText = $("#modal-text");
+              modalText.text(text);
+              modal.show();
+            };
+            
             // Check if all cards are matched and opened
             if ($(".card.card-back").length === 0) {
-              alert("You won!");
+              showBanner("You won!", "green");
             }
             isComparing = false;
           } else {
@@ -85,7 +105,7 @@ $(() => {
     };    
     $(".card").on("click", eventHandler);
   
-    let timeLeft = 40;
+    let timeLeft = 3;
     const countdown = $("<div>")
       .addClass("countdown")
       .text(`Time left: ${timeLeft} seconds`);
@@ -99,7 +119,7 @@ $(() => {
         clearInterval(countdownInterval);
         $(".card.card-back").toggleClass("card-back");
         setTimeout(() => {
-          alert("Game over!");
+          showBanner("Game over!", "red");
         }, 300);
       }
     }, 1000);
