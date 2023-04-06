@@ -39,6 +39,7 @@ $(() => {
       $(".gameboard").append(card);
     }
 
+    // Create banner for You won! and Game over! message
     const showBanner = (text, color) => {
       const $bannerDiv = $('<div>').attr('id', 'banner');
       $('.container').append($bannerDiv);
@@ -51,11 +52,13 @@ $(() => {
         }, 5000);
       });
     };
-  
+    
     let openedCards = [];
   
     let isComparing = false;
     
+    let hasWon = false;
+
     // Add event handler and toggle class
     const eventHandler = (event) => {
       const clickedCard = $(event.currentTarget);
@@ -80,16 +83,10 @@ $(() => {
           if (firstLetter === secondLetter) {
             openedCards = [];
             
-            const showModal = (text) => {
-              const modal = $("#modal");
-              const modalText = $("#modal-text");
-              modalText.text(text);
-              modal.show();
-            };
-            
             // Check if all cards are matched and opened
             if ($(".card.card-back").length === 0) {
               showBanner("You won!", "green");
+              hasWon = true;
             }
             isComparing = false;
           } else {
@@ -105,7 +102,7 @@ $(() => {
     };    
     $(".card").on("click", eventHandler);
   
-    let timeLeft = 3;
+    let timeLeft = 30;
     const countdown = $("<div>")
       .addClass("countdown")
       .text(`Time left: ${timeLeft} seconds`);
@@ -115,12 +112,15 @@ $(() => {
       timeLeft--;
       countdown.text(`Time left: ${timeLeft} seconds`);
   
-      if (timeLeft === 0) {
+      if (!hasWon && timeLeft === 0) {
         clearInterval(countdownInterval);
         $(".card.card-back").toggleClass("card-back");
         setTimeout(() => {
           showBanner("Game over!", "red");
         }, 300);
+      }
+      if (hasWon) {
+        clearInterval(countdownInterval);
       }
     }, 1000);
   });
