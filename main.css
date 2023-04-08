@@ -47,8 +47,45 @@ body {
     background-color: lightgrey;
     color: rgba(0,0,0,0);
   }
+  .button-counter {
+    white-space: nowrap;
+  }
+  .restart {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 2.3em;
+    color: #3d3d3d;
+    text-shadow: 2px 2px 4px grey;
+    margin-right: 20px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+  }
+  
+  .restart:hover {
+    color: blue;
+    font-weight: bold;
+  }
+  
+  .restart::after {
+    content: "Restart";
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #3d3d3d;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .restart:hover::after {
+    display: block;
+  }
   .countdown {
     display: inline-block;
+    vertical-align: top;
     width: 350px;
     padding: 0.5%;
     justify-content: center;
@@ -56,7 +93,7 @@ body {
     border: 1px solid grey;
     box-shadow: 2px 2px 4px grey;
     border-radius: 10px;
-    background-color: #3d3d3d;
+    background-color: rgba(61, 61, 61, 0.5);
     color: white;
     font-size: 1.5em;
   }

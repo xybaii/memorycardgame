@@ -138,12 +138,20 @@ $(() => {
   
   $(".card").on("click", handleCardClick);
   
+  // Create game buttons and counter container
+  const buttonCounterContainer = $("<div>").addClass("button-counter");
+  $(".gameboard").before(buttonCounterContainer);
+
+  // Create restart button
+  const restartButton = $("<div>").addClass("restart").text("⟳");
+  $('.button-counter').append(restartButton);
+
   // Create countdown timer
   let timeLeft = 30;
   const countdown = $("<div>")
     .addClass("countdown")
     .html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
-  $(".gameboard").before(countdown);
+  $(".button-counter").append(countdown);
   
   const updateCountdown = () => {
     const countdown = $(".countdown");
@@ -172,4 +180,8 @@ $(() => {
       endGame();
     }
   }, 1000);
+
+
+  
+
 });
