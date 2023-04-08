@@ -1,4 +1,6 @@
 $(() => {
+
+  const startEasyGame = () => {
   // Create card images
   const cardImages = [
     "♥",
@@ -67,6 +69,10 @@ $(() => {
   
   // add event handler to cards
   const handleCardClick = (event) => {
+
+    if (hasWon || timeLeft <= 0) {
+      return;
+    }
     const clickedCard = $(event.currentTarget);
     incrementMoves();
     updateMoves();
@@ -140,45 +146,26 @@ $(() => {
   const restartButton = $("<div>").addClass("restart").text("↻");
   $('.gameConsole').append(restartButton);
 
-  // Restart game when restart button is clicked
-  const resetGame = () => {
-    
-    $(".gameboard").fadeOut(100, () => {
+// Reset game function
+const resetGame = () => {
+  // Clear gameboard
+  $(".gameboard").empty();
+  // Reset variables
+  openedCards = [];
+  isComparing = false;
+  hasWon = false;
+  moves = 0;
+  timeLeft = 3;
+  // Call startGame function to restart the game
+  startEasyGame();
+};
 
-      $(".card").remove();
-  
-    shuffle(cardImages);
-  
-    // Recreate card elements
-    for (let i = 0; i < cardImages.length; i++) {
-      const card = $("<div>")
-        .addClass("card")
-        .addClass("card-back")
-        .attr("id", cardImages[i]);
-      const cardDesign = $("<h1>").text(cardImages[i]);
-      card.append(cardDesign);
-      $(".gameboard").append(card);
-    }
-  
-    // Reset game variables
-    openedCards = [];
-    isComparing = false;
-    hasWon = false;
-    moves = 0;
-    timeLeft = 30;
-  
-    // Update countdown and moves display
-    updateMoves();
-  
-    // Bind event handler to cards
-    $(".card").on("click", handleCardClick);
-    $(".gameboard").fadeIn(100);
-  });
-  };
-  $(".restart").on("click", resetGame);
+// Add event listener to restart button
+$(".restart").on("click", resetGame);
+
 
   // Create countdown timer
-  let timeLeft = 30;
+  let timeLeft = 3;
   const countdown = $("<div>")
     .addClass("timeCounter")
     .html(`You left: ${timeLeft} s`);
@@ -224,5 +211,6 @@ $(() => {
   // Create a difficult mode button
   const difficultButton = $("<div>").addClass("difficult").text("➠");
   $('.gameConsole').append(difficultButton);
-
+  }
+  startEasyGame();
 });
