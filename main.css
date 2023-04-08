@@ -85,7 +85,7 @@ body {
     display: block;
   }
 
-.difficult {
+.hard {
   display: inline-block;
   vertical-align: top;
   font-size: 2.3em;
@@ -97,12 +97,12 @@ body {
   cursor: default;
 }
 
-.difficult:hover {
+.hard:hover {
   color: blue;
   font-weight: bold;
 }
 
-.difficult::after {
+.hard::after {
   content: "hard mode";
   text-shadow: none;
   display: none;
@@ -117,7 +117,7 @@ body {
   font-size: 20px;
 }
 
-.difficult:hover::after {
+.hard:hover::after {
   display: block;
 }
 

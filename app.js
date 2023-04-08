@@ -147,6 +147,8 @@ $(() => {
 
 // Reset game function
 const resetGame = () => {
+  // remove banner immediately if reset
+  $("#banner").remove();
   // Clear gameboard
   $(".gameboard").empty();
   // Reset variables
@@ -154,7 +156,7 @@ const resetGame = () => {
   isComparing = false;
   hasWon = false;
   moves = 0;
-  timeLeft = 3;
+  timeLeft = 30;
   // Call startGame function to restart the game
   startEasyGame();
 };
@@ -164,7 +166,7 @@ $(".restart").on("click", resetGame);
 
 
   // Create countdown timer
-  let timeLeft = 3;
+  let timeLeft = 30;
   const countdown = $("<div>")
     .addClass("timeCounter")
     .html(`You left: ${timeLeft} s`);
@@ -207,9 +209,9 @@ $(".restart").on("click", resetGame);
     }
   }, 1000);
 
-  // Create a difficult mode button
-  const difficultButton = $("<div>").addClass("difficult").text("➠");
-  $('.gameConsole').append(difficultButton);
+  // Create a hard mode button
+  const hardButton = $("<div>").addClass("hard").text("➠");
+  $('.gameConsole').append(hardButton);
   }
   startEasyGame();
 });
