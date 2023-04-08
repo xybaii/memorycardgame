@@ -140,16 +140,48 @@ $(() => {
   
   // Create game buttons and counter container
   const buttonCounterContainer = $("<div>").addClass("button-counter");
-  $(".gameboard").before(buttonCounterContainer);
+  $(".gameboard").prepend(buttonCounterContainer);
 
   // Create restart button
-  const restartButton = $("<div>").addClass("restart").text("⟳");
+  const restartButton = $("<div>").addClass("restart").text("↻");
   $('.button-counter').append(restartButton);
 
   // Restart game when restart button is clicked
-  $(".restart").on("click", () => {
-  location.reload();
+  const resetGame = () => {
+    
+    $(".gameboard").fadeOut(100, () => {
+
+      $(".card").remove();
+  
+    shuffle(cardImages);
+  
+    // Recreate card elements
+    for (let i = 0; i < cardImages.length; i++) {
+      const card = $("<div>")
+        .addClass("card")
+        .addClass("card-back")
+        .attr("id", cardImages[i]);
+      const cardDesign = $("<h1>").text(cardImages[i]);
+      card.append(cardDesign);
+      $(".gameboard").append(card);
+    }
+  
+    // Reset game variables
+    openedCards = [];
+    isComparing = false;
+    hasWon = false;
+    moves = 0;
+    timeLeft = 30;
+  
+    // Update countdown and moves display
+    updateCountdownAndMoves();
+  
+    // Bind event handler to cards
+    $(".card").on("click", handleCardClick);
+    $(".gameboard").fadeIn(100);
   });
+  };
+  $(".restart").on("click", resetGame);
 
   // Create countdown timer
   let timeLeft = 30;
