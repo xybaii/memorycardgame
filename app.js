@@ -65,6 +65,7 @@ $(() => {
   let hasWon = false;
   let moves = 0;
   
+  // add event handler to cards
   const handleCardClick = (event) => {
     const clickedCard = $(event.currentTarget);
     incrementMoves();
@@ -79,13 +80,15 @@ $(() => {
     }
   };
   
+  // Count number of moves
   const incrementMoves = () => moves++;
   
   const updateCountdownAndMoves = () => {
     const countdown = $(".countdown");
-    countdown.html(`Time left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
+    countdown.html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
   };
   
+  // Open cards
   const canOpenCard = (card) => card.hasClass("card-back") && !isComparing;
   
   const openCard = (card) => {
@@ -95,6 +98,7 @@ $(() => {
   
   const twoCardsAreOpen = () => openedCards.length === 2;
   
+  // Compare cards
   const compareCards = () => {
     isComparing = true;
     const [firstCard, secondCard] = openedCards;
@@ -108,6 +112,7 @@ $(() => {
     }
   };
   
+  // Check cards match
   const cardsMatch = (firstLetter, secondLetter) => firstLetter === secondLetter;
   
   const handleMatchingCards = () => {
@@ -121,6 +126,7 @@ $(() => {
     isComparing = false;
   };
   
+  // If cards don't match, flip them back over
   const handleNonMatchingCards = (firstCard, secondCard) => {
     setTimeout(() => {
       firstCard.toggleClass("card-back");
@@ -132,27 +138,30 @@ $(() => {
   
   $(".card").on("click", handleCardClick);
   
+  // Create countdown timer
   let timeLeft = 30;
   const countdown = $("<div>")
     .addClass("countdown")
-    .html(`Time left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
+    .html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
   $(".gameboard").before(countdown);
   
   const updateCountdown = () => {
     const countdown = $(".countdown");
-    countdown.html(`Time left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
+    countdown.html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
   };
   
+  // End the game if time runs out
   const endGame = () => {
     clearInterval(countdownInterval);
     $(".card.card-back").toggleClass("card-back");
-    setTimeout(() => showBanner("Game over!", "red"), 300);
+    setTimeout(() => showBanner("Time's up!", "red"), 300);
   };
   
   const winGame = () => {
     clearInterval(countdownInterval);
   };
   
+  // Run the countdown timer
   const countdownInterval = setInterval(() => {
     timeLeft--;
     updateCountdown();
@@ -163,5 +172,4 @@ $(() => {
       endGame();
     }
   }, 1000);
-  
 });

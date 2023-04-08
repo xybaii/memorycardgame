@@ -10,7 +10,7 @@ body {
     height: 30vh;
     max-width: 540px;
     min-width: 540px;
-    margin: 40px auto 0;
+    margin: 20px auto 0;
   }
 
 .card {
@@ -49,8 +49,9 @@ body {
   }
   .countdown {
     display: inline-block;
-    width: 490px;
+    width: 350px;
     padding: 0.5%;
+    justify-content: center;
     align-items: center;
     border: 1px solid grey;
     box-shadow: 2px 2px 4px grey;
