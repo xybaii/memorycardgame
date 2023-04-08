@@ -2,6 +2,52 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
   }
+
+/* Set font family and size */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Style the input field */
+#name-input {
+  display: inline-block;
+  width: 205px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Style the buttons */
+button {
+  display: inline-block;
+  background-color: #6c63ff;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Change button color on hover */
+button:hover {
+  background-color: #4d47cc;
+}
+
+/* Style the Easy button */
+#easyMode {
+  margin-right: 10px;
+}
+
+/* Style the Hard button */
+#hardMode {
+  margin-left: 10px;
+}
+
 .gameboard {
     display: flex;
     flex-wrap: wrap;
@@ -53,17 +99,17 @@ body {
   .restart {
     display: inline-block;
     vertical-align: top;
-    font-size: 2em;
+    font-size: 2.3em;
     color: #3d3d3d;
-    text-shadow: 2px 2px 4px grey;
-    margin-right: 30px;
+    text-shadow: 1px 1px 2px darkgrey;
+    margin-right: 20px;
     transition: all 0.2s ease-in-out;
     position: relative;
     cursor: default;
   }
   
   .restart:hover {
-    color: blue;
+    color: #6c63ff;
     font-weight: bold;
   }
   
@@ -88,17 +134,17 @@ body {
 .hard {
   display: inline-block;
   vertical-align: top;
-  font-size: 2.3em;
+  font-size: 2.8em;
   color: #3d3d3d;
-  text-shadow: 2px 2px 4px grey;
-  margin-left: 30px;
+  text-shadow: 1px 1px 2px darkgrey;
+  margin-left: 20px;
   transition: all 0.2s ease-in-out;
   position: relative;
   cursor: default;
 }
 
 .hard:hover {
-  color: blue;
+  color: #6c63ff;
   font-weight: bold;
 }
 
@@ -124,8 +170,8 @@ body {
   .timeCounter {
     display: inline-block;
     vertical-align: top;
-    width: 180px;
-    padding: 1%;
+    width: 160px;
+    padding: 10px 24px;
     justify-content: center;
     align-items: center;
     border: 1px solid grey;
@@ -133,15 +179,15 @@ body {
     border-radius: 10px;
     background-color: #3d3d3d;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   .movesCounter {
     display: inline-block;
     vertical-align: top;
-    width: 140px;
-    padding: 1%;
-    margin-left: 30px;
+    width: 120px;
+    padding: 10px 24px;
+    margin-left: 20px;
     justify-content: center;
     align-items: center;
     border: 1px solid grey;
@@ -149,7 +195,7 @@ body {
     border-radius: 10px;
     background-color: #3d3d3d;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   #banner {
     display: block;

@@ -155,7 +155,7 @@ $(() => {
         isComparing = false;
         hasWon = false;
         moves = 0;
-        timeLeft = 30;
+        timeLeft = 310;
         // Call startGame function to restart the game
         startEasyGame();
         // Fade in the gameboard
@@ -171,7 +171,7 @@ $(() => {
     });
 
     // Create countdown timer
-    let timeLeft = 30;
+    let timeLeft = 300;
     const countdown = $("<div>")
       .addClass("timeCounter")
       .html(`You left: ${timeLeft} s`);
