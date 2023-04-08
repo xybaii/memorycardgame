@@ -56,9 +56,10 @@ body {
     font-size: 2.3em;
     color: #3d3d3d;
     text-shadow: 2px 2px 4px grey;
-    margin-right: 20px;
+    margin-right: 30px;
     transition: all 0.2s ease-in-out;
     position: relative;
+    cursor: default;
   }
   
   .restart:hover {
@@ -67,22 +68,58 @@ body {
   }
   
   .restart::after {
-    content: "Restart";
+    content: "restart";
+    text-shadow: none;
     display: none;
     position: absolute;
     bottom: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-90%);
     padding: 5px 10px;
-    background-color: #3d3d3d;
-    color: white;
-    border-radius: 5px;
-    font-size: 14px;
+    background-color: #ffffff;    border-radius: 3px;
+    color: #a3a3a3;
+    font-size: 20px;
   }
   
   .restart:hover::after {
     display: block;
   }
+
+.difficult {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 2.3em;
+  color: #3d3d3d;
+  text-shadow: 2px 2px 4px grey;
+  margin-left: 30px;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  cursor: default;
+}
+
+.difficult:hover {
+  color: blue;
+  font-weight: bold;
+}
+
+.difficult::after {
+  content: "hard mode";
+  text-shadow: none;
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-10%);
+  padding: 5px 10px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  color: #a3a3a3;
+  font-size: 20px;
+}
+
+.difficult:hover::after {
+  display: block;
+}
   .countdown {
     display: inline-block;
     vertical-align: top;
@@ -93,7 +130,7 @@ body {
     border: 1px solid grey;
     box-shadow: 2px 2px 4px grey;
     border-radius: 10px;
-    background-color: rgba(61, 61, 61, 0.5);
+    background-color: #3d3d3d;
     color: white;
     font-size: 1.5em;
   }

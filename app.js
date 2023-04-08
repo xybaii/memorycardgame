@@ -146,6 +146,11 @@ $(() => {
   const restartButton = $("<div>").addClass("restart").text("⟳");
   $('.button-counter').append(restartButton);
 
+  // Restart game when restart button is clicked
+  $(".restart").on("click", () => {
+  location.reload();
+  });
+
   // Create countdown timer
   let timeLeft = 30;
   const countdown = $("<div>")
@@ -181,7 +186,8 @@ $(() => {
     }
   }, 1000);
 
-
-  
+  // Create a difficult mode button
+  const difficultButton = $("<div>").addClass("difficult").text("➠");
+  $('.button-counter').append(difficultButton);
 
 });
