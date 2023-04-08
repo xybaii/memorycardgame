@@ -54,14 +54,13 @@ $(() => {
     $(".container").append($bannerDiv);
     const banner = $("#banner");
     banner.text(text);
-    banner.css({ backgroundColor: color });
-    banner.animate({ top: "50%" }, 500, () => {
-      setTimeout(() => {
-        banner.animate({ top: "-100px" }, 500);
-      }, 5000);
-    });
+    banner.css({ backgroundColor: color, display: "none" });
+    banner.fadeIn();
+    setTimeout(() => {
+      banner.fadeOut(() => banner.remove());
+    }, 5000);
   };
-
+  
   let openedCards = [];
   let isComparing = false;
   let hasWon = false;

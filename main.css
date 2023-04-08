@@ -156,7 +156,7 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 400px;
     height: 100px;
     line-height: 90px;
@@ -164,6 +164,7 @@ body {
     font-weight: bold;
     font-size: 3rem;
     color: white;
+    background-color: #000;
     border-radius: 5px;
     box-shadow: 2px 2px 4px grey;
     z-index: 2;
@@ -187,3 +188,4 @@ body {
       transform: translate(-50%, -50%) rotate(0deg);
     }
   }
+  
