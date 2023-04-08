@@ -144,19 +144,25 @@ $(() => {
 
     // Reset game function
     const resetGame = () => {
-      // remove banner immediately if reset
-      $("#banner").remove();
-      // Clear gameboard
-      $(".gameboard").empty();
-      // Reset variables
-      openedCards = [];
-      isComparing = false;
-      hasWon = false;
-      moves = 0;
-      timeLeft = 30;
-      // Call startGame function to restart the game
-      startEasyGame();
+      // Fade out the gameboard
+      $(".gameboard").fadeOut(300, () => {
+        // remove banner immediately if reset
+        $("#banner").remove();
+        // Clear gameboard
+        $(".gameboard").empty();
+        // Reset variables
+        openedCards = [];
+        isComparing = false;
+        hasWon = false;
+        moves = 0;
+        timeLeft = 30;
+        // Call startGame function to restart the game
+        startEasyGame();
+        // Fade in the gameboard
+        $(".gameboard").fadeIn(300);
+      });
     };
+    
 
     // Add event listener to restart button
     $('.restart').click(() => {
@@ -209,7 +215,6 @@ $(() => {
         winGame();
       } else if (timeLeft === 0) {
         endGame();
-        clearInterval(countdownInterval);
       }
     }, 1000);
 
