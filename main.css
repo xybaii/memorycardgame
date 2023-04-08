@@ -9,7 +9,6 @@ body {
     align-items: center;
     height: 30vh;
     max-width: 540px;
-    min-width: 540px;
     margin: 20px auto 0;
   }
 
@@ -47,8 +46,9 @@ body {
     background-color: lightgrey;
     color: rgba(0,0,0,0);
   }
-  .button-counter {
+  .gameConsole {
     white-space: nowrap;
+    margin-bottom: 20px;
   }
   .restart {
     display: inline-block;
@@ -120,11 +120,28 @@ body {
 .difficult:hover::after {
   display: block;
 }
-  .countdown {
+
+  .timeCounter {
     display: inline-block;
     vertical-align: top;
-    width: 350px;
-    padding: 0.5%;
+    width: 180px;
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 4px grey;
+    border-radius: 10px;
+    background-color: #3d3d3d;
+    color: white;
+    font-size: 1.5em;
+  }
+
+  .movesCounter {
+    display: inline-block;
+    vertical-align: top;
+    width: 140px;
+    padding: 1%;
+    margin-left: 30px;
     justify-content: center;
     align-items: center;
     border: 1px solid grey;

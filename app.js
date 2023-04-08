@@ -69,7 +69,7 @@ $(() => {
   const handleCardClick = (event) => {
     const clickedCard = $(event.currentTarget);
     incrementMoves();
-    updateCountdownAndMoves();
+    updateMoves();
   
     if (canOpenCard(clickedCard)) {
       openCard(clickedCard);
@@ -80,13 +80,7 @@ $(() => {
     }
   };
   
-  // Count number of moves
-  const incrementMoves = () => moves++;
-  
-  const updateCountdownAndMoves = () => {
-    const countdown = $(".countdown");
-    countdown.html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
-  };
+
   
   // Open cards
   const canOpenCard = (card) => card.hasClass("card-back") && !isComparing;
@@ -139,12 +133,12 @@ $(() => {
   $(".card").on("click", handleCardClick);
   
   // Create game buttons and counter container
-  const buttonCounterContainer = $("<div>").addClass("button-counter");
+  const buttonCounterContainer = $("<div>").addClass("gameConsole");
   $(".gameboard").prepend(buttonCounterContainer);
 
   // Create restart button
   const restartButton = $("<div>").addClass("restart").text("↻");
-  $('.button-counter').append(restartButton);
+  $('.gameConsole').append(restartButton);
 
   // Restart game when restart button is clicked
   const resetGame = () => {
@@ -174,7 +168,7 @@ $(() => {
     timeLeft = 30;
   
     // Update countdown and moves display
-    updateCountdownAndMoves();
+    updateMoves();
   
     // Bind event handler to cards
     $(".card").on("click", handleCardClick);
@@ -186,15 +180,24 @@ $(() => {
   // Create countdown timer
   let timeLeft = 30;
   const countdown = $("<div>")
-    .addClass("countdown")
-    .html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
-  $(".button-counter").append(countdown);
+    .addClass("timeCounter")
+    .html(`You left: ${timeLeft} s`);
+  $(".gameConsole").append(countdown);
   
   const updateCountdown = () => {
-    const countdown = $(".countdown");
-    countdown.html(`You left: ${timeLeft} seconds&nbsp;&nbsp;&nbsp;&nbsp;Moves: ${moves}`);
+    $(".timeCounter").html(`You left: ${timeLeft} s`);
   };
   
+  const movesCounter = $('<div>').addClass('movesCounter').html(`Moves: ${moves}`);
+  $('.gameConsole').append(movesCounter);
+
+  // Count number of moves
+  const incrementMoves = () => moves++;
+  
+  const updateMoves = () => {
+    $(".movesCounter").html(`Moves: ${moves}`);
+  };
+
   // End the game if time runs out
   const endGame = () => {
     clearInterval(countdownInterval);
@@ -220,6 +223,6 @@ $(() => {
 
   // Create a difficult mode button
   const difficultButton = $("<div>").addClass("difficult").text("➠");
-  $('.button-counter').append(difficultButton);
+  $('.gameConsole').append(difficultButton);
 
 });
