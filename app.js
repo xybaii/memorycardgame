@@ -298,6 +298,34 @@ $(() => {
     // Create a hard mode button
     const hardButton = $("<div>").addClass("hard").text("➠");
     $(".gameConsole").append(hardButton);
+
+    const goHardGame = () => {
+      // Fade out the gameboard2
+      $(".gameboard").fadeOut(300, () => {
+        // remove banner immediately if reset
+        $("#banner").remove();
+        // Clear gameboard2
+        $(".gameboard").empty();
+        $(".gameboard").hide();
+        // Reset variables
+        openedCards = [];
+        isComparing = false;
+        hasWon = false;
+        moves = 0;
+        timeLeft = 40;
+        // Call startGame function to restart the game
+        startHardGame();
+        // Fade in the gameboard2
+        $(".gameboard2").fadeIn(300);
+      });
+    };
+    
+
+    // Add event listener to restart button
+    $('.hard').click(() => {
+      clearInterval(countdownInterval);
+      goHardGame();
+    });
   };
 
   // ========== Hard mode gameboard ========== //
@@ -535,6 +563,34 @@ $(() => {
     // Create a easy mode button
     const easyButton = $("<div>").addClass("easy").text("➠");
     $(".gameConsole").append(easyButton);
+
+    const goEasyGame = () => {
+      // Fade out the gameboard2
+      $(".gameboard2").fadeOut(300, () => {
+        // remove banner immediately if reset
+        $("#banner").remove();
+        // Clear gameboard2
+        $(".gameboard2").empty();
+        $(".gameboard2").hide();
+        // Reset variables
+        openedCards = [];
+        isComparing = false;
+        hasWon = false;
+        moves = 0;
+        timeLeft = 31;
+        // Call startGame function to restart the game
+        startEasyGame();
+        // Fade in the gameboard2
+        $(".gameboard").fadeIn(300);
+      });
+    };
+    
+
+    // Add event listener to restart button
+    $('.easy').click(() => {
+      clearInterval(countdownInterval);
+      goEasyGame();
+    });
   };
 
 });
