@@ -63,7 +63,7 @@ li {
   margin: 20px auto 0;
   text-align: center;
 }
-
+ /* For easy mode */
 .gameboard {
     display: flex;
     flex-wrap: wrap;
@@ -253,3 +253,51 @@ li {
     }
   }
   
+
+  /* For hard mode */
+  .gameboard2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    max-width: 540px;
+    margin: 20px auto 0;
+  }
+
+
+.easy {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 2.8em;
+  color: #3d3d3d;
+  text-shadow: 1px 1px 2px darkgrey;
+  margin-left: 20px;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  cursor: default;
+}
+
+.easy:hover {
+  color: #6c63ff;
+  font-weight: bold;
+}
+
+.easy::after {
+  content: "easy mode";
+  text-shadow: none;
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-10%);
+  padding: 5px 10px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  color: #a3a3a3;
+  font-size: 20px;
+}
+
+.easy:hover::after {
+  display: block;
+}
