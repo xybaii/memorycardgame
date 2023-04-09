@@ -51,13 +51,13 @@ $(() => {
   
 
       hardModeInstructionDiv.html(`
-        <h2>****Hello ${playerName}!</h2>
+        <h2>Hello ${playerName}!</h2>
         <p>Here are the game play instructions:</p>
         <ul>
           <li>Memorize the positions of the cards when you flip them over.</li>
           <li>If the cards match, they will stay flipped over.</li>
           <li>If the cards do not match, they will flip back over for 3s before it's clickable again.</li>
-          <li>The game will be over if you are unable to flip all matching cards within 30s.</li>
+          <li>The game will be over if you are unable to flip all matching cards within 40s.</li>
           <li>Break your best record with the longest time left </li>
           <li>and least moves taken to finish the game.</li>
         </ul>
@@ -497,7 +497,7 @@ $(() => {
         isComparing = false;
         hasWon = false;
         moves = 0;
-        timeLeft = 31;
+        timeLeft = 41;
         // Call startGame function to restart the game
         startHardGame();
         // Fade in the gameboard2
