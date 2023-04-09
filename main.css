@@ -8,12 +8,19 @@ body {
   font-family: Arial, sans-serif;
   font-size: 16px;
 }
+.gamehomepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
 
 /* Style the input field */
 #name-input {
   display: inline-block;
   width: 205px;
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
   border: 2px solid #ccc;
   font-size: 1.2rem;
@@ -46,6 +53,15 @@ button:hover {
 /* Style the Hard button */
 #hardMode {
   margin-left: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding-bottom: 20px;
+}
+li {
+  margin: 20px auto 0;
+  text-align: center;
 }
 
 .gameboard {
@@ -175,9 +191,10 @@ button:hover {
     justify-content: center;
     align-items: center;
     border: 1px solid grey;
-    box-shadow: 2px 2px 4px grey;
+    box-shadow: 1px 1px 3px grey;
     border-radius: 10px;
-    background-color: #3d3d3d;
+    background-color: #555555;
+    transition: background-color 0.3s ease;
     color: white;
     font-size: 1.2em;
   }
@@ -191,9 +208,10 @@ button:hover {
     justify-content: center;
     align-items: center;
     border: 1px solid grey;
-    box-shadow: 2px 2px 4px grey;
+    box-shadow: 1px 1px 3px grey;
     border-radius: 10px;
-    background-color: #3d3d3d;
+    background-color: #555555;
+    transition: background-color 0.3s ease;
     color: white;
     font-size: 1.2em;
   }

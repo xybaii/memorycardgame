@@ -1,4 +1,47 @@
 $(() => {
+  // ========== Game home page ==========
+ 
+
+    const nameInput = $('#name-input');
+    const easyModeButton = $('#easyMode');
+    const easyModeInstructionDiv = $('.easyModeInstruction');
+    const startGameButton = $('<button>').text('Start Game');
+
+    $('.gameboard').hide();
+  
+    easyModeButton.on('click', () => {
+      const playerName = nameInput.val();
+  
+      $('.gamehomepage').hide();
+      easyModeInstructionDiv.show();
+  
+
+      easyModeInstructionDiv.html(`
+        <h2>Hello ${playerName}!</h2>
+        <p>Here are the game play instructions:</p>
+        <ul>
+          <li>Memorize the positions of the cards when you flip them over.</li>
+          <li>If the cards match, they will stay flipped over.</li>
+          <li>If the cards do not match, they will flip back over.</li>
+          <li>The game will be over if you are unable to flip all matching cards within 30s.</li>
+          <li>Break your best record with the longest time left </li>
+          <li>and least moves taken to finish the game.</li>
+        </ul>
+      `);
+  
+      easyModeInstructionDiv.append(startGameButton);
+    });
+  
+    startGameButton.on('click', () => {
+      easyModeInstructionDiv.hide();
+      $('.gameboard').show();
+      startEasyGame();
+    });
+  
+  
+
+  
+  // ========== Easy mode game ==========
   const startEasyGame = () => {
     // Create card images
     const cardImages = [
@@ -222,5 +265,4 @@ $(() => {
     const hardButton = $("<div>").addClass("hard").text("➠");
     $(".gameConsole").append(hardButton);
   };
-  startEasyGame();
 });
