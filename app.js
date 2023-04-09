@@ -110,7 +110,10 @@ $(() => {
     };
     shuffle(cardImages);
 
-    // Create card elements
+    // Create cards in a container
+    const cardsContainer = $('<div>').addClass('cards-container');
+    $('.gameboard').append(cardsContainer);
+
     for (let i = 0; i < cardImages.length; i++) {
       const card = $("<div>")
         .addClass("card")
@@ -118,7 +121,7 @@ $(() => {
         .attr("id", cardImages[i]);
       const cardDesign = $("<h1>").text(cardImages[i]);
       card.append(cardDesign);
-      $(".gameboard").append(card);
+      $(".cards-container").append(card);
     }
 
     // Create banner for You won! and Game over! message
@@ -300,22 +303,22 @@ $(() => {
   // ========== Hard mode gameboard ========== //
   const startHardGame = () => {
     const cardImages = [
-      "♥",
-      "♥",
-      "☁",
-      "☁",
-      "◈",
-      "◈",
-      "♫",
-      "♫",
-      "☺",
-      "☺",
-      "☀",
-      "☀",
-      "✰",
-      "✰",
-      "✿",
-      "✿",
+      "♞",
+      "♞",
+      "♩",
+      "♩",
+      "✭",
+      "✭",
+      "☻",
+      "☻",
+      "❤",
+      "❤",
+      "❒",
+      "❒",
+      "ꕤ",
+      "ꕤ",
+      "❆",
+      "❆",
     ];
 
     // Shuffle the card images randomly
@@ -334,7 +337,10 @@ $(() => {
     };
     shuffle(cardImages);
 
-    // Create card elements
+    // Create cards in container
+    const cardsContainer2 = $('<div>').addClass('cards-container2');
+    $('.gameboard2').append(cardsContainer2);
+
     for (let i = 0; i < cardImages.length; i++) {
       const card = $("<div>")
         .addClass("card")
@@ -342,7 +348,7 @@ $(() => {
         .attr("id", cardImages[i]);
       const cardDesign = $("<h1>").text(cardImages[i]);
       card.append(cardDesign);
-      $(".gameboard2").append(card);
+      $(".cards-container2").append(card);
     }
 
     // Create banner for You won! and Game over! message
