@@ -301,3 +301,12 @@ li {
 .easy:hover::after {
   display: block;
 }
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, pointer-events 0.3s ease-in-out;
+}
+
+.disabled:hover {
+  cursor: not-allowed;
+}

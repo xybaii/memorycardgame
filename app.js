@@ -305,10 +305,10 @@ $(() => {
     const cardImages = [
       "♞",
       "♞",
-      "♩",
-      "♩",
-      "✭",
-      "✭",
+      "♬",
+      "♬",
+      "✪",
+      "✪",
       "☻",
       "☻",
       "❤",
@@ -388,7 +388,9 @@ $(() => {
     };
 
     // Open cards
-    const canOpenCard = (card) => card.hasClass("card-back") && !isComparing;
+    const canOpenCard = (card) => 
+      card.hasClass("card-back") && !isComparing && !card.hasClass("disabled");
+
 
     const openCard = (card) => {
       openedCards.push(card);
@@ -428,6 +430,14 @@ $(() => {
 
     // If cards don't match, flip them back over
     const handleNonMatchingCards = (firstCard, secondCard) => {
+      // Add class to the mismatched cards
+      firstCard.add(secondCard).addClass("disabled");
+    
+      setTimeout(() => {
+        // Remove class after 3 seconds
+        firstCard.add(secondCard).removeClass("disabled");
+      }, 3000);
+    
       setTimeout(() => {
         firstCard.toggleClass("card-back");
         secondCard.toggleClass("card-back");
@@ -475,7 +485,7 @@ $(() => {
     });
 
     // Create countdown timer
-    let timeLeft = 30;
+    let timeLeft = 40;
     const countdown = $("<div>")
       .addClass("timeCounter")
       .html(`Hard mode: ${timeLeft} s`);
