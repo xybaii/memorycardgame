@@ -1,24 +1,23 @@
 $(() => {
   // ========== Game home page ========== //
-    const nameInput = $('#name-input');
-    const easyModeButton = $('#easyMode');
-    const easyModeInstructionDiv = $('.easyModeInstruction');
-    const startGameButton = $('<button>').text('Start Game');
-    const hardModeButton = $('#hardMode');
-    const hardModeInstructionDiv = $('.hardModeInstruction');
-    const startChallengeButton = $('<button>').text('Start Challenge');
+  const nameInput = $("#name-input");
+  const easyModeButton = $("#easyMode");
+  const easyModeInstructionDiv = $(".easyModeInstruction");
+  const startGameButton = $("<button>").text("Start Game");
+  const hardModeButton = $("#hardMode");
+  const hardModeInstructionDiv = $(".hardModeInstruction");
+  const startChallengeButton = $("<button>").text("Start Challenge");
 
-    $('.gameboard').hide();
-  
-    // ========== If chose easy mode button ========== //
-    easyModeButton.on('click', () => {
-      const playerName = nameInput.val();
-  
-      $('.gamehomepage').hide();
-      easyModeInstructionDiv.show();
-  
+  $(".gameboard").hide();
 
-      easyModeInstructionDiv.html(`
+  // ========== If chose easy mode button ========== //
+  easyModeButton.on("click", () => {
+    const playerName = nameInput.val();
+
+    $(".gamehomepage").hide();
+    easyModeInstructionDiv.show();
+
+    easyModeInstructionDiv.html(`
         <h2>Hello ${playerName}!</h2>
         <p>Here are the game play instructions:</p>
         <ul>
@@ -30,27 +29,26 @@ $(() => {
           <li>and least moves taken to finish the game.</li>
         </ul>
       `);
-  
-      easyModeInstructionDiv.append(startGameButton);
-    });
-  
-    startGameButton.on('click', () => {
-      easyModeInstructionDiv.hide();
-      $('.gameboard').show();
-      startEasyGame();
-    });
-  
-    // ========== If chose hard mode button ========== //
-    $('.gameboard2').hide();
 
-    hardModeButton.on('click', () => {
-      const playerName = nameInput.val();
-  
-      $('.gamehomepage').hide();
-      hardModeInstructionDiv.show();
-  
+    easyModeInstructionDiv.append(startGameButton);
+  });
 
-      hardModeInstructionDiv.html(`
+  startGameButton.on("click", () => {
+    easyModeInstructionDiv.hide();
+    $(".gameboard").show();
+    startEasyGame();
+  });
+
+  // ========== If chose hard mode button ========== //
+  $(".gameboard2").hide();
+
+  hardModeButton.on("click", () => {
+    const playerName = nameInput.val();
+
+    $(".gamehomepage").hide();
+    hardModeInstructionDiv.show();
+
+    hardModeInstructionDiv.html(`
         <h2>Hello ${playerName}!</h2>
         <p>Here are the game play instructions:</p>
         <ul>
@@ -62,16 +60,16 @@ $(() => {
           <li>and least moves taken to finish the game.</li>
         </ul>
       `);
-  
-      hardModeInstructionDiv.append(startChallengeButton);
-    });
-  
-    startChallengeButton.on('click', () => {
-      hardModeInstructionDiv.hide();
-      $('.gameboard2').show()
-      startHardGame();
-    });
-  
+
+    hardModeInstructionDiv.append(startChallengeButton);
+  });
+
+  startChallengeButton.on("click", () => {
+    hardModeInstructionDiv.hide();
+    $(".gameboard2").show();
+    startHardGame();
+  });
+
   // ========== Easy mode gameboard ========== //
   const startEasyGame = () => {
     // Create card images
@@ -111,8 +109,8 @@ $(() => {
     shuffle(cardImages);
 
     // Create cards in a container
-    const cardsContainer = $('<div>').addClass('cards-container');
-    $('.gameboard').append(cardsContainer);
+    const cardsContainer = $("<div>").addClass("cards-container");
+    $(".gameboard").append(cardsContainer);
 
     for (let i = 0; i < cardImages.length; i++) {
       const card = $("<div>")
@@ -211,7 +209,7 @@ $(() => {
 
     $(".card").on("click", handleCardClick);
 
-    // Create game buttons and counter container
+    // Create game console buttons
     const buttonCounterContainer = $("<div>").addClass("gameConsole");
     $(".gameboard").prepend(buttonCounterContainer);
 
@@ -239,10 +237,9 @@ $(() => {
         $(".gameboard").fadeIn(300);
       });
     };
-    
 
     // Add event listener to restart button
-    $('.restart').click(() => {
+    $(".restart").click(() => {
       clearInterval(countdownInterval);
       resetGame();
     });
@@ -281,8 +278,6 @@ $(() => {
       clearInterval(countdownInterval);
     };
 
-
-
     // Run the countdown timer
     const countdownInterval = setInterval(() => {
       timeLeft--;
@@ -319,10 +314,9 @@ $(() => {
         $(".gameboard2").fadeIn(300);
       });
     };
-    
 
     // Add event listener to restart button
-    $('.hard').click(() => {
+    $(".hard").click(() => {
       clearInterval(countdownInterval);
       goHardGame();
     });
@@ -365,9 +359,9 @@ $(() => {
     };
     shuffle(cardImages);
 
-    // Create cards in container
-    const cardsContainer2 = $('<div>').addClass('cards-container2');
-    $('.gameboard2').append(cardsContainer2);
+    // Create cards in container2
+    const cardsContainer2 = $("<div>").addClass("cards-container2");
+    $(".gameboard2").append(cardsContainer2);
 
     for (let i = 0; i < cardImages.length; i++) {
       const card = $("<div>")
@@ -416,9 +410,8 @@ $(() => {
     };
 
     // Open cards
-    const canOpenCard = (card) => 
+    const canOpenCard = (card) =>
       card.hasClass("card-back") && !isComparing && !card.hasClass("disabled");
-
 
     const openCard = (card) => {
       openedCards.push(card);
@@ -456,16 +449,16 @@ $(() => {
       isComparing = false;
     };
 
-    // If cards don't match, flip them back over
+    // If cards don't match, flip them back over for 3 seconds
     const handleNonMatchingCards = (firstCard, secondCard) => {
       // Add class to the mismatched cards
       firstCard.add(secondCard).addClass("disabled");
-    
+
       setTimeout(() => {
         // Remove class after 3 seconds
         firstCard.add(secondCard).removeClass("disabled");
       }, 3000);
-    
+
       setTimeout(() => {
         firstCard.toggleClass("card-back");
         secondCard.toggleClass("card-back");
@@ -476,7 +469,7 @@ $(() => {
 
     $(".card").on("click", handleCardClick);
 
-    // Create game buttons and counter container
+    // Create game console buttons
     const buttonCounterContainer = $("<div>").addClass("gameConsole");
     $(".gameboard2").prepend(buttonCounterContainer);
 
@@ -504,10 +497,9 @@ $(() => {
         $(".gameboard2").fadeIn(300);
       });
     };
-    
 
     // Add event listener to restart button
-    $('.restart').click(() => {
+    $(".restart").click(() => {
       clearInterval(countdownInterval);
       resetGame();
     });
@@ -546,8 +538,6 @@ $(() => {
       clearInterval(countdownInterval);
     };
 
-
-
     // Run the countdown timer
     const countdownInterval = setInterval(() => {
       timeLeft--;
@@ -578,19 +568,17 @@ $(() => {
         hasWon = false;
         moves = 0;
         timeLeft = 31;
-        // Call startGame function to restart the game
+        // Call startEasyGame function
         startEasyGame();
         // Fade in the gameboard2
         $(".gameboard").fadeIn(300);
       });
     };
-    
 
     // Add event listener to restart button
-    $('.easy').click(() => {
+    $(".easy").click(() => {
       clearInterval(countdownInterval);
       goEasyGame();
     });
   };
-
 });
