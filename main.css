@@ -312,8 +312,8 @@ li {
 }
 
 @media only screen and (max-width: 700px) {
-  .gameboard .gameboard2 .gameConsole {
-    width: 1300%;
+  canvas {
+    width: 130%;
     height: auto;
   }
 }
