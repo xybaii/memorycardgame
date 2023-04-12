@@ -313,7 +313,7 @@ li {
 
 @media only screen and (max-width: 700px) {
   .gameboard .gameboard2 .gameConsole {
-    width: 100%;
+    width: 1300%;
     height: auto;
   }
 }
