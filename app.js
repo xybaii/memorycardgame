@@ -1,18 +1,25 @@
 $(() => {
-  // ========== Game home page ========== //
+  //  Insert background music
+  const bgm = $("#bgm")[0];
+  bgm.currentTime = 0;
+  bgm.loop = true;
+
+  //  Create home page & instruction pages
   const nameInput = $("#name-input");
   const easyModeButton = $("#easyMode");
+  const hardModeButton = $("#hardMode");
   const easyModeInstructionDiv = $(".easyModeInstruction");
   const startGameButton = $("<button>").text("Start Game");
-  const hardModeButton = $("#hardMode");
   const hardModeInstructionDiv = $(".hardModeInstruction");
   const startChallengeButton = $("<button>").text("Start Challenge");
 
   $(".gameboard").hide();
+  $(".gameboard2").hide();
 
-  // ========== If chose easy mode button ========== //
+  //  If chose Easy mode, go Easy mode instruction page
   easyModeButton.on("click", () => {
     const playerName = nameInput.val();
+    bgm.play();
 
     $(".gamehomepage").hide();
     easyModeInstructionDiv.show();
@@ -39,11 +46,10 @@ $(() => {
     startEasyGame();
   });
 
-  // ========== If chose hard mode button ========== //
-  $(".gameboard2").hide();
-
+  // If chose hard mode, go Hard mode instruction page
   hardModeButton.on("click", () => {
     const playerName = nameInput.val();
+    bgm.play();
 
     $(".gamehomepage").hide();
     hardModeInstructionDiv.show();
@@ -70,7 +76,7 @@ $(() => {
     startHardGame();
   });
 
-  // ========== Easy mode gameboard ========== //
+  // Easy mode gameboard
   const startEasyGame = () => {
     // Create card images
     const cardImages = [
@@ -92,7 +98,7 @@ $(() => {
       "✿",
     ];
 
-    // Shuffle the card images randomly
+    // Shuffle the card images randomly using Fisher yates algorithm
     const shuffle = (array) => {
       let currentIndex = array.length,
         temporaryValue,
@@ -122,25 +128,12 @@ $(() => {
       $(".cards-container").append(card);
     }
 
-    // Create banner for You won! and Game over! message
-    const showBanner = (text, color) => {
-      const $bannerDiv = $("<div>").attr("id", "banner");
-      $(".gameboard").append($bannerDiv);
-      const banner = $("#banner");
-      banner.text(text);
-      banner.css({ backgroundColor: color, display: "none" });
-      banner.fadeIn();
-      setTimeout(() => {
-        banner.fadeOut(() => banner.remove());
-      }, 5000);
-    };
-
     let openedCards = [];
     let isComparing = false;
     let hasWon = false;
     let moves = 0;
 
-    // add event handler to cards
+    // Handle card clicks
     const handleCardClick = (event) => {
       if (hasWon || timeLeft <= 0) {
         return;
@@ -158,14 +151,16 @@ $(() => {
       }
     };
 
-    // Open cards
+    // Openable cards (not already open, not comparing)
     const canOpenCard = (card) => card.hasClass("card-back") && !isComparing;
 
+    // Opening card
     const openCard = (card) => {
       openedCards.push(card);
       card.toggleClass("card-back");
     };
 
+    // When two cards are open
     const twoCardsAreOpen = () => openedCards.length === 2;
 
     // Compare cards
@@ -182,10 +177,11 @@ $(() => {
       }
     };
 
-    // Check cards match
+    // Matching cards
     const cardsMatch = (firstLetter, secondLetter) =>
       firstLetter === secondLetter;
 
+    // when all matching cards are opened, player win, stop compare
     const handleMatchingCards = () => {
       openedCards = [];
 
@@ -197,7 +193,7 @@ $(() => {
       isComparing = false;
     };
 
-    // If cards don't match, flip them back over
+    // If cards opened don't match, flip them back over, stop compare
     const handleNonMatchingCards = (firstCard, secondCard) => {
       setTimeout(() => {
         firstCard.toggleClass("card-back");
@@ -208,6 +204,19 @@ $(() => {
     };
 
     $(".card").on("click", handleCardClick);
+
+    // Create banner for You won! and Game over! message
+    const showBanner = (text, color) => {
+      const $bannerDiv = $("<div>").attr("id", "banner");
+      $(".gameboard").append($bannerDiv);
+      const banner = $("#banner");
+      banner.text(text);
+      banner.css({ backgroundColor: color, display: "none" });
+      banner.fadeIn();
+      setTimeout(() => {
+        banner.fadeOut(() => banner.remove());
+      }, 5000);
+    };
 
     // Create game console buttons
     const buttonCounterContainer = $("<div>").addClass("gameConsole");
@@ -238,7 +247,7 @@ $(() => {
       });
     };
 
-    // Add event listener to restart button
+    // Click estart button to clear coutndown and reset game
     $(".restart").click(() => {
       clearInterval(countdownInterval);
       resetGame();
@@ -255,6 +264,7 @@ $(() => {
       $(".timeCounter").html(`Easy mode: ${timeLeft} s`);
     };
 
+    // Create moves counter
     const movesCounter = $("<div>")
       .addClass("movesCounter")
       .html(`Moves: ${moves}`);
@@ -263,6 +273,7 @@ $(() => {
     // Count number of moves
     const incrementMoves = () => moves++;
 
+    // Update moves counter
     const updateMoves = () => {
       $(".movesCounter").html(`Moves: ${moves}`);
     };
@@ -274,6 +285,7 @@ $(() => {
       setTimeout(() => showBanner("Time's up!", "red"), 300);
     };
 
+    // End the game if player wins
     const winGame = () => {
       clearInterval(countdownInterval);
     };
@@ -294,35 +306,35 @@ $(() => {
     const hardButton = $("<div>").addClass("hard").text("➠");
     $(".gameConsole").append(hardButton);
 
+    // go to hard mode game function
     const goHardGame = () => {
-      // Fade out the gameboard2
       $(".gameboard").fadeOut(300, () => {
-        // remove banner immediately if reset
         $("#banner").remove();
-        // Clear gameboard2
         $(".gameboard").empty();
         $(".gameboard").hide();
+
         // Reset variables
         openedCards = [];
         isComparing = false;
         hasWon = false;
         moves = 0;
         timeLeft = 40;
-        // Call startGame function to restart the game
+
+        // Call startHardGame function to restart the game in hard mode
         startHardGame();
         // Fade in the gameboard2
         $(".gameboard2").fadeIn(300);
       });
     };
 
-    // Add event listener to restart button
+    // Click restart button to clear coutndown and go to hard game mode
     $(".hard").click(() => {
       clearInterval(countdownInterval);
       goHardGame();
     });
   };
 
-  // ========== Hard mode gameboard ========== //
+  // Hard mode gameboard
   const startHardGame = () => {
     const cardImages = [
       "♞",
@@ -343,7 +355,7 @@ $(() => {
       "❆",
     ];
 
-    // Shuffle the card images randomly
+    // Shuffle the card images
     const shuffle = (array) => {
       let currentIndex = array.length,
         temporaryValue,
@@ -372,19 +384,6 @@ $(() => {
       card.append(cardDesign);
       $(".cards-container2").append(card);
     }
-
-    // Create banner for You won! and Game over! message
-    const showBanner = (text, color) => {
-      const $bannerDiv = $("<div>").attr("id", "banner");
-      $(".gameboard2").append($bannerDiv);
-      const banner = $("#banner");
-      banner.text(text);
-      banner.css({ backgroundColor: color, display: "none" });
-      banner.fadeIn();
-      setTimeout(() => {
-        banner.fadeOut(() => banner.remove());
-      }, 5000);
-    };
 
     let openedCards = [];
     let isComparing = false;
@@ -469,6 +468,19 @@ $(() => {
 
     $(".card").on("click", handleCardClick);
 
+    // Create banner for You won! and Game over! message
+    const showBanner = (text, color) => {
+      const $bannerDiv = $("<div>").attr("id", "banner");
+      $(".gameboard2").append($bannerDiv);
+      const banner = $("#banner");
+      banner.text(text);
+      banner.css({ backgroundColor: color, display: "none" });
+      banner.fadeIn();
+      setTimeout(() => {
+        banner.fadeOut(() => banner.remove());
+      }, 5000);
+    };
+
     // Create game console buttons
     const buttonCounterContainer = $("<div>").addClass("gameConsole");
     $(".gameboard2").prepend(buttonCounterContainer);
@@ -479,26 +491,25 @@ $(() => {
 
     // Reset game function
     const resetGame = () => {
-      // Fade out the gameboard2
       $(".gameboard2").fadeOut(300, () => {
-        // remove banner immediately if reset
         $("#banner").remove();
-        // Clear gameboard2
         $(".gameboard2").empty();
+
         // Reset variables
         openedCards = [];
         isComparing = false;
         hasWon = false;
         moves = 0;
         timeLeft = 41;
-        // Call startGame function to restart the game
+
+        // Call startHardGame function to restart the game
         startHardGame();
         // Fade in the gameboard2
         $(".gameboard2").fadeIn(300);
       });
     };
 
-    // Add event listener to restart button
+    // Clcik restart button to reset hard game
     $(".restart").click(() => {
       clearInterval(countdownInterval);
       resetGame();
@@ -515,6 +526,7 @@ $(() => {
       $(".timeCounter").html(`Hard mode: ${timeLeft} s`);
     };
 
+    // Create moves counter
     const movesCounter = $("<div>")
       .addClass("movesCounter")
       .html(`Moves: ${moves}`);
@@ -554,20 +566,20 @@ $(() => {
     const easyButton = $("<div>").addClass("easy").text("➠");
     $(".gameConsole").append(easyButton);
 
+    // Go to easy mode
     const goEasyGame = () => {
-      // Fade out the gameboard2
       $(".gameboard2").fadeOut(300, () => {
-        // remove banner immediately if reset
         $("#banner").remove();
-        // Clear gameboard2
         $(".gameboard2").empty();
         $(".gameboard2").hide();
+
         // Reset variables
         openedCards = [];
         isComparing = false;
         hasWon = false;
         moves = 0;
         timeLeft = 31;
+
         // Call startEasyGame function
         startEasyGame();
         // Fade in the gameboard2
@@ -575,7 +587,7 @@ $(() => {
       });
     };
 
-    // Add event listener to restart button
+    // Restart button to reset easy game
     $(".easy").click(() => {
       clearInterval(countdownInterval);
       goEasyGame();
