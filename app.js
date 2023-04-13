@@ -26,7 +26,7 @@ $(() => {
 
     easyModeInstructionDiv.html(`
         <h2>Hello ${playerName}!</h2>
-        <p>Here are the game play instructions:</p>
+        <p><b>Here are the game play instructions:</b></p>
         <ul>
           <li>Memorize the positions of the cards when you flip them over.</li>
           <li>If the cards match, they will stay flipped over.</li>
@@ -34,6 +34,11 @@ $(() => {
           <li>The game will be over if you are unable to flip all matching cards within 30s.</li>
           <li>Break your best record with the longest time left </li>
           <li>and least moves taken to finish the game.</li>
+          <br>
+          <li>You may click on the <span>↻</span> button to restart your game or</li>
+          <li>click on the <span>➠</span> button to go to hard mode.</li>
+          <li>You will given 40s instead to complete the hard mode game</li>
+          <li>but your cards will be locked for 3s if you do not match them correctly.</li>
         </ul>
       `);
 
@@ -64,6 +69,11 @@ $(() => {
           <li>The game will be over if you are unable to flip all matching cards within 40s.</li>
           <li>Break your best record with the longest time left </li>
           <li>and least moves taken to finish the game.</li>
+          <br>
+          <li>You may click on the <span>↻</span> button to restart your game or</li>
+          <li>click on the <span>➠</span> button to go to easy mode.</li>
+          <li>You will given 30s instead to complete the easy  mode game</li>
+          <li>and your cards will not be locked for 3s if you do not match them correctly.</li>
         </ul>
       `);
 
@@ -327,7 +337,7 @@ $(() => {
       });
     };
 
-    // Click restart button to clear coutndown and go to hard game mode
+    // Click to go hard game
     $(".hard").click(() => {
       clearInterval(countdownInterval);
       goHardGame();
@@ -587,7 +597,7 @@ $(() => {
       });
     };
 
-    // Restart button to reset easy game
+    // Click to go easy game
     $(".easy").click(() => {
       clearInterval(countdownInterval);
       goEasyGame();
