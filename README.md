@@ -8,8 +8,21 @@ You can customize the game by changing the images used for the cards on the game
 
 ### Technologies Used
 JavaScript
+Jquery
 HTML
 CSS
+
+### Approach
+This memory card game was developed using JavaScript, HTML, and CSS. The approach taken for this project was to create a simple and intuitive user interface that would provide an enjoyable experience for player.
+
+The development process began by researching existing memory card games to gain an understanding of the basic mechanics and user experience.
+
+The game was built using JavaScript and Jquery, with no external libraries or frameworks. The card matching logic was implemented using an array to store the card values, and event listeners were used to detect clicks on the cards.
+
+CSS was used to style the game interface, with a focus on creating a clean and minimalist design that would be easy to navigate.
+
+Overall, the approach taken for this project was to create a simple and engaging memory card game using standard web technologies. The focus was on creating a game that was fun to play, easy to understand, and accessible to a wide audience.
+
 
 ### Screenshots of the game
 #### Game homepage
