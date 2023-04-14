@@ -26,15 +26,15 @@ Overall, the approach taken for this project was to create a simple and engaging
 
 ### Screenshots of the game
 #### Game homepage
-<img width="1433" alt="image" src="https://user-images.githubusercontent.com/112844279/232046912-53cbac64-c839-473b-bdcc-18750b928390.png">
+<img width="460" alt="image" src="https://user-images.githubusercontent.com/112844279/232049892-6939bc3f-e492-4662-ae61-23c59b1a2175.png">
 
 #### Game instruction pages
-<img width="1430" alt="image" src="https://user-images.githubusercontent.com/112844279/232047040-9293818b-db38-44cc-a135-e9fef096759f.png">
-<img width="1427" alt="image" src="https://user-images.githubusercontent.com/112844279/232047093-1d017455-7264-4680-abad-a89f8e06901c.png">
+<img width="550" alt="image" src="https://user-images.githubusercontent.com/112844279/232049950-ed5378d0-7e49-408d-a4a1-5953c304bc3c.png">
+<img width="595" alt="image" src="https://user-images.githubusercontent.com/112844279/232049989-959b34a7-6429-43af-96b8-154feb2b8565.png">
 
 #### Gameboards
-<img width="597" alt="image" src="https://user-images.githubusercontent.com/112844279/232047308-c524b3a7-38e8-4c46-9958-68483df2e421.png">
-<img width="694" alt="image" src="https://user-images.githubusercontent.com/112844279/232047449-47a0a736-a744-48ef-abf4-822861340a06.png">
+<img width="514" alt="image" src="https://user-images.githubusercontent.com/112844279/232050565-9225905a-a422-4698-bdc4-5fcc97291dc5.png">
+<img width="522" alt="image" src="https://user-images.githubusercontent.com/112844279/232050749-24f598ed-0e44-4c66-a610-d87991998b0a.png">
 
 ### Credits
 This game was created by Xinying. If you have any questions or feedback, please contact me at xpeh001@e.ntu.edu.sg.
