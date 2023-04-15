@@ -1,5 +1,5 @@
 $(() => {
-  //  Insert background music
+  //  Create background music
   const bgm = $("#bgm")[0];
   bgm.currentTime = 0;
   bgm.loop = true;
@@ -123,6 +123,17 @@ $(() => {
       return array;
     };
     shuffle(cardImages);
+
+    // const shuffle = (array) => {
+    //   for(let i = 0;i < array.length; i++) {
+    //     const randomIndex = Math.floor(Math.random() * array.length);
+    //     const temporaryValue = array[i];
+    //     array[i] = array[randomIndex];
+    //     array[randomIndex] = temporaryValue;
+    //   }
+    //   return array;
+    // };
+    // shuffle(cardImages);
 
     // Create cards in a container
     const cardsContainer = $("<div>").addClass("cards-container");
