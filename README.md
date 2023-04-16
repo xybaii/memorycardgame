@@ -36,5 +36,5 @@ Overall, the approach taken for this project was to create a simple and engaging
 <img width="514" alt="image" src="https://user-images.githubusercontent.com/112844279/232050565-9225905a-a422-4698-bdc4-5fcc97291dc5.png">
 <img width="522" alt="image" src="https://user-images.githubusercontent.com/112844279/232050749-24f598ed-0e44-4c66-a610-d87991998b0a.png">
 
-### Credits
-This game was created by Xinying. If you have any questions or feedback, please contact me at peh.xinying9@gmail.com
+### Contact
+If you have any questions or feedback, please contact me at peh.xinying9@gmail.com
