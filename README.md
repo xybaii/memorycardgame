@@ -1,4 +1,10 @@
 # JavaScript Memory Card Game
+
+### Live site
+https://xinyingpeh.github.io/javascript-memorycardgame/
+(best view on web browser)
+
+
 ### About
 This is a simple memory card game implemented using JavaScript, HTML, and CSS. The game consists of a set of cards that are arranged face down on the screen. The player's goal is to flip over pairs of matching cards by clicking on them. If the cards match, they will remain face up. If they do not match, they will be flipped back over.
 ### Getting Started
