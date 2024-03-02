@@ -1,7 +1,8 @@
 # JavaScript Memory Card Game
 
 ### Live site
-](https://xinyingpeh.github.io/memorycardgame/)\n(best view on web browser)
+https://xinyingpeh.github.io/memorycardgame
+(best view on web browser)
 
 
 ### About
