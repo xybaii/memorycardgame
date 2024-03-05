@@ -2,7 +2,7 @@
 
 ### Live site
 https://xinyingpeh.github.io/memorycardgame
-(best view on web browser)
+(Note: Best view on Desktop view as this is not responsive/mobile friendly)
 
 
 ### About
