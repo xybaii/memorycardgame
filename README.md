@@ -1,7 +1,8 @@
 # JavaScript Memory Card Game
 
 ### Live site
-Link: https://xybaii.github.io/js-memorycardgame 
+https://xybaii.github.io/memorycardgame/
+
 (Best view on Desktop view as this is not responsive/mobile friendly)
 
 
