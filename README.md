@@ -3,7 +3,7 @@
 ### Live site
 https://xybaii.github.io/memorycardgame/
 
-(Best view on Desktop view as this is not responsive/mobile friendly)
+(Best view on Desktop as this is not responsive/mobile friendly)
 
 
 ### About
